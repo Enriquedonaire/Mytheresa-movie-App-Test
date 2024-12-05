@@ -1,16 +1,29 @@
-### Mytheresa Movie App Task 🎥
- This project is a movie application built with React, Webpack, Babel, and Sass y SSR.
+# Mytheresa Movie App 🎥
 
-### 🚀 How to Run This Project
-Follow the steps below to clone the repository, install dependencies, build the project, and run it locally.
+This project is a movie web application created with React and deployed using GitHub Pages.
 
-### 1️⃣ Clone the Repository
-Clone the repository from the main branch:
+## Features
 
-git clone -b main [https://github.com/Enriquedonaire/mytheresa-movie-app-task.git](https://github.com/Enriquedonaire/Mytheresa-movie-App-Test)
-cd mytheresa-movie-app-task
-git clone -b main [https://github.com/Enriquedonaire/mytheresa-movie-app-task.git](https://github.com/Enriquedonaire/Mytheresa-movie-App-Test)
-cd mytheresa-movie-app-task
-npm install
-npm run build
-npm start
+- Browse movies by genre.
+- View movie details.
+- Add movies to your wishlist.
+- Fully responsive design.
+
+## Live Demo
+
+You can access the live application here:  
+[Mytheresa Movie App](https://enriquedonaire.github.io/Mytheresa-movie-App-Test/)
+
+> **Note:** After navigating to the page, you can refresh it without issues as all routes are handled correctly. HashRouter ensures smooth navigation throughout the app.
+
+---
+
+## Installation
+
+Follow the steps below to clone and set up the project locally.
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Enriquedonaire/Mytheresa-movie-App-Test.git
+cd Mytheresa-movie-App-Test
