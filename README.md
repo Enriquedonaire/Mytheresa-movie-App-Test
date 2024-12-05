@@ -1,6 +1,6 @@
 # Mytheresa Movie App 🎥
 
-This project is a movie web application created with React and deployed using GitHub Pages.
+This project is a movie web application created with React, Webpack, Babel, Sass and  SSR., and deployed using GitHub Pages.
 
 ## Features
 
