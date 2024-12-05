@@ -22,9 +22,12 @@ Follow the steps below to clone and set up the project locally.
 
 ### 1. Clone the Repository
 
+```bash
 git clone https://github.com/Enriquedonaire/Mytheresa-movie-App-Test.git
 cd Mytheresa-movie-App-Test
 npm install 
 npm run build
 npm start
+````
+
 
