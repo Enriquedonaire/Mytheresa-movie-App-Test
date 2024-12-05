@@ -6,7 +6,7 @@ import "./styles/main.scss";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-    <BrowserRouter>
+    <BrowserRouter basename="/Mytheresa-movie-App-Test">
         <App />
     </BrowserRouter>
 );
