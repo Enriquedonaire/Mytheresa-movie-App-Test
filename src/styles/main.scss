@@ -1,0 +1,765 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour+Convergence&display=swap');
+
+
+
+$font-family: 'Roboto', Arial, sans-serif;
+$background-color: #141414;
+$text-color: #fff;
+$header-padding: 1.5rem 2rem;
+$header-bg-gradient: linear-gradient(180deg, rgba(0, 0, 0, 0.9) 1%, transparent);
+$transition-duration: 0.6s;
+$blur-effect: 1px;
+$button-bg-color: #e50914;
+$button-hover-bg-color: #b00710;
+$button-padding: 0.8rem 2rem;
+$button-border-radius: 5px;
+$card-bg-color: #222;
+$card-padding: 1rem;
+$card-border-radius: 8px;
+$wishlist-bg-color: #222;
+$hero-bg-color: #000;
+$carousel-control-color: #fff;
+
+
+@mixin transition($properties...) {
+    transition: $properties $transition-duration ease-in-out;
+}
+
+@mixin button-styles {
+    background-color: $button-bg-color;
+    color: $text-color;
+    padding: $button-padding;
+    border: none;
+    border-radius: $button-border-radius;
+    cursor: pointer;
+    @include transition(background-color);
+
+    &:hover {
+        background-color: $button-hover-bg-color;
+    }
+}
+
+@mixin card-styles {
+    background-color: $card-bg-color;
+    padding: $card-padding;
+    border-radius: $card-border-radius;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+body {
+    font-family: $font-family;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    color: $text-color;
+    overflow-x: hidden;
+}
+
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $header-padding;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+    background-image: $header-bg-gradient;
+    @include transition(background-color, backdrop-filter);
+    backdrop-filter: blur($blur-effect);
+
+    &.scrolled {
+        background: $background-color;
+        backdrop-filter: none;
+    }
+
+    h1 {
+        color: #22a1a5;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .wishlist-icon {
+        text-decoration: none;
+        color: $text-color;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        margin-right: 5rem;
+
+        svg {
+            margin-right: 0.5rem;
+        }
+
+        &:hover {
+            color: $button-bg-color;
+        }
+    }
+
+    .header-text {
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+.hero-banner {
+    position: relative;
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: $text-color;
+    opacity: 0;
+    @include transition(opacity);
+
+    &.active {
+        opacity: 1;
+    }
+
+    .banner-content {
+        position: absolute;
+        bottom: 20%;
+        left: 5%;
+        max-width: 50%;
+        @include transition(opacity);
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            @include button-styles;
+
+            &:first-child {
+                margin-right: 1rem;
+            }
+
+            &:last-child {
+                background-color: rgba(255, 255, 255, 0.7);
+                color: black;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.9);
+                }
+            }
+        }
+    }
+}
+
+.hero-banner-container {
+    position: relative;
+    height: 80vh;
+    overflow: hidden;
+
+    .hero-banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 0;
+        @include transition(opacity);
+        z-index: 0;
+
+        &.active {
+            opacity: 1;
+            z-index: 1;
+        }
+    }
+
+    .banner-content {
+        position: absolute;
+        bottom: 20%;
+        left: 5%;
+        max-width: 50%;
+        color: $text-color;
+        z-index: 2;
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            @include button-styles;
+
+            &:first-child {
+                margin-right: 1rem;
+            }
+
+            &:last-child {
+                background-color: rgba(255, 255, 255, 0.7);
+                color: black;
+
+                &:hover {
+                    background-color: rgba(255, 255, 255, 0.9);
+                }
+            }
+        }
+    }
+}
+
+.homepage {
+    padding-top: 0;
+    top: 0;
+}
+
+.category-title {
+    margin-top: 2rem;
+    margin-left: 1%;
+    font-size: 1rem;
+}
+
+.carousel-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 2rem;
+
+    &:hover .arrow {
+        opacity: 1;
+    }
+
+    .arrow {
+        height: 83%;
+        width: 50px;
+        background: rgba(0, 0, 0, 0.45);
+        color: $carousel-control-color;
+        border: none;
+        font-size: 3.5rem;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+        opacity: 0;
+        @include transition(opacity);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left {
+        left: 0;
+    }
+
+    .right {
+        right: 0;
+    }
+
+    .carousel-items {
+        display: flex;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        gap: 1rem;
+        padding: 1rem;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .carousel-items::-webkit-scrollbar {
+        display: none;
+    }
+
+    .carousel-item {
+        min-width: 200px;
+        max-width: 300px;
+        @include transition(transform);
+
+        &:hover {
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        img {
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+    }
+}
+
+.wishlist {
+    padding: 2rem;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .empty-message {
+        text-align: center;
+        font-size: 1.5rem;
+        color: #bbb;
+        margin-top: 2rem;
+    }
+
+    .wishlist-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1.5rem;
+        justify-items: center;
+        padding: 1rem;
+
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+
+        @media (min-width: 1200px) {
+            grid-template-columns: repeat(6, 1fr);
+            gap: 3rem;
+        }
+
+
+        @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .wishlist-item {
+            @include card-styles;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 200px;
+            max-width: 100%;
+
+            img {
+                border-radius: 5px;
+                width: 100%;
+                height: auto;
+            }
+
+            p {
+                margin-top: 0.5rem;
+            }
+
+            .wishlist-actions {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-top: 1rem;
+
+                button {
+                    @include button-styles;
+                    padding: 0.5rem 1rem;
+                }
+            }
+        }
+    }
+
+
+    .back-button-wishlist {
+        background: none;
+        border: none;
+        color: $text-color;
+        font-size: 1rem;
+        margin-top: 3rem;
+        margin-left: 0.1rem;
+        cursor: pointer;
+
+        &:hover {
+            color: $button-bg-color;
+        }
+    }
+}
+
+.detail-page {
+    overflow: hidden;
+    color: $text-color;
+    min-height: 100vh;
+    padding: 2rem 5%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    &.action {
+        background: linear-gradient(to bottom right, #000000, #414141 85%);
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+
+        .wishlist-button {
+            background-color: #b7030c;
+            border-radius: 25%;
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+                background-color: rgb(108, 7, 16);
+            }
+        }
+
+        .image-area img {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 6px 6px 12px rgba(0, 0, 1, 0.6);
+            }
+        }
+    }
+
+    &.adventure {
+        background: linear-gradient(to bottom right, #000000, #1f3e76 85%);
+        font-family: 'Cinzel', sans-serif;
+
+        .wishlist-button {
+            background-color: transparent;
+            color: #f0c808 !important;
+            border: 2px solid #f0c808 !important;
+            border-radius: 5px;
+            padding: 0.7rem 1.5rem;
+            cursor: pointer;
+            transition: $transition-duration;
+
+            &:hover {
+                background-color: #f0c808;
+                color: #000000 !important;
+            }
+        }
+
+        .image-area img {
+            box-shadow: 10px 10px 20px rgba(0, 0, 1, 0.5);
+            transition: $transition-duration;
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 6px 6px 12px rgba(0, 0, 1, 0.6);
+            }
+        }
+    }
+
+    &.animation {
+        background: linear-gradient(to bottom right, #000000, #52255d 95%);
+        font-family: 'Sixtyfour Convergence', sans-serif;
+
+        .wishlist-button {
+            background: linear-gradient(45deg, #7d0064, #0909bb);
+            border: none;
+            color: $text-color;
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            font-weight: bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: $transition-duration;
+
+            &:hover {
+                background: linear-gradient(45deg, #300099, #86026c);
+                box-shadow: 0 12px 20px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .image-area img {
+            box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+            transition: $transition-duration;
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6);
+            }
+        }
+    }
+
+    .back-button {
+        position: absolute;
+        top: 70px;
+        left: 20px;
+        margin-top: 0.1rem;
+        background: none;
+        border: none;
+        color: $text-color;
+        font-size: 1.2rem;
+        cursor: pointer;
+
+        &:hover {
+            color: $button-bg-color;
+        }
+    }
+
+    .detail-container {
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+        max-width: 1115px;
+        margin: 5rem auto 0;
+        align-items: flex-start;
+
+        .image-area img {
+            width: 300px;
+            border-radius: 10px;
+            margin-right: 2rem;
+            transition: $transition-duration;
+
+            &:hover {
+                transform: scale(1.1);
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6);
+            }
+        }
+
+        .info-area {
+            flex: 1;
+
+            h1 {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+
+            .wishlist-button {
+                margin-top: 1rem;
+                padding: 0.7rem 1.5rem;
+                border: none;
+                cursor: pointer;
+                border-radius: 4px;
+                color: $text-color;
+                @include transition(background-color);
+
+                &:disabled {
+                    background-color: #555;
+                    cursor: not-allowed;
+                    color: #bbb;
+                }
+
+                &.action {
+                    border-radius: 25px;
+                }
+            }
+        }
+    }
+
+    .cast-section {
+        margin-top: 3rem;
+        max-width: 1115px;
+        margin: 0 auto;
+        text-align: center;
+
+        h2 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .cast-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+
+            .cast-item {
+                text-align: center;
+
+                img {
+                    border-radius: 5px;
+                    width: 100px;
+                    height: 150px;
+                    object-fit: cover;
+                    box-shadow: 10px 10px 16px rgba(0, 0, 0, 0.745);
+                    transition: $transition-duration;
+
+                    &:hover {
+                        transform: scale(1.1);
+                        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.6);
+                    }
+                }
+
+                .character {
+                    font-size: 0.9rem;
+                    color: #ccc;
+                    margin-top: 8px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
+
+.back-button {
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 1rem;
+    margin-top: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        color: $button-bg-color;
+    }
+}
+
+.back-button-wishlist {
+    background: none;
+    border: none;
+    color: $text-color;
+    font-size: 1rem;
+    margin: 3rem;
+    cursor: pointer;
+
+    &:hover {
+        color: $button-bg-color;
+    }
+}
+
+
+
+@media (max-width: 1200px) {
+    .wishlist-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .detail-container {
+        flex-direction: column;
+        align-items: center;
+
+        .image-area img {
+            width: 100%;
+        }
+
+        .info-area {
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 992px) {
+    .wishlist-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .carousel-item {
+        min-width: 150px;
+    }
+
+    .hero-banner .banner-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-banner .banner-content p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero-banner .banner-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-banner .banner-content p {
+        font-size: 0.9rem;
+    }
+
+    .carousel-item {
+        min-width: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-banner .banner-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero-banner .banner-content p {
+        font-size: 0.8rem;
+    }
+
+    .carousel-item {
+        min-width: 100px;
+    }
+
+    .main-header h1 {
+        font-size: 1.2rem;
+    }
+
+    .main-header .wishlist-icon {
+        font-size: 1rem;
+        margin-right: 7rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-header {
+        padding: 1rem;
+    }
+
+    .main-header h1 {
+        font-size: 1rem;
+    }
+
+    .main-header .wishlist-icon {
+        font-size: 0.9rem;
+        margin-right: 2rem;
+    }
+
+    .hero-banner .banner-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .hero-banner .banner-content p {
+        font-size: 0.7rem;
+    }
+
+    .carousel-item {
+        min-width: 80px;
+    }
+
+    .wishlist-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .wishlist-item {
+        width: 100%;
+    }
+
+    .detail-container {
+        flex-direction: column;
+        align-items: center;
+
+        .image-area img {
+            width: 100%;
+        }
+
+        .info-area {
+            text-align: center;
+        }
+    }
+}
