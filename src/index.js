@@ -1,12 +1,11 @@
-import React from "react";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App.jsx";
-import "./styles/main.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { HashRouter } from 'react-router-dom';
+import App from './App';
 
-const root = createRoot(document.getElementById("root"));
-root.render(
-    <BrowserRouter basename="/Mytheresa-movie-App-Test">
+ReactDOM.render(
+    <HashRouter>
         <App />
-    </BrowserRouter>
+    </HashRouter>,
+    document.getElementById('root')
 );
