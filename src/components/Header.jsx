@@ -19,7 +19,7 @@ const Header = () => {
     return (
         <header className={`main-header ${isScrolled ? "scrolled" : ""}`}>
             <Link to="/" className="header-text">
-            <h1>Mytheresa Movies App</h1>
+            <h1>FlixHub</h1>
             </Link>
             <Link to="/wishlist" className="wishlist-icon">
                 <MdPlaylistAdd size={24} />

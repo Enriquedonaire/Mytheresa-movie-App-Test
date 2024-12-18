@@ -27,7 +27,7 @@ app.get('*', (req, res) => {
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>MYTHERESA MOVIE APP</title>
+            <title>FlixHub MOVIE APP</title>
             <link rel="stylesheet" href="/main.css">
         </head>
         <body>
