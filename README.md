@@ -12,7 +12,7 @@ This project is a movie web application created with React, Webpack, Babel, Sass
 ## Live Demo
 
 You can access the live application here:  
-[Mytheresa Movie App](https://enriquedonaire.github.io/Mytheresa-movie-App-Test/)
+[Mytheresa Movie App](https://enriquedonaire.github.io/Mytheresa-movie-App-Test/) 🎞
 
 ---
 
